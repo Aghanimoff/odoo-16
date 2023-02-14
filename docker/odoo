@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+import subprocess
+import time
+
+import ptvsd
+
+# set server timezone in UTC before time module imported
+__import__('os').environ['TZ'] = 'UTC'
+import odoo
+
+if __name__ == "__main__":
+    process = subprocess.Popen("hostname -I | awk '{print $BASH_ARGV}'", stdout=subprocess.PIPE, shell=True)
+    while process.wait():
+        time.sleep(0.1)
+    output, err = process.communicate()
+    host = output.split()[-1].decode("utf-8") 
+    print(host)
+    ptvsd.enable_attach(address = (host, 5678))
+
+    odoo.cli.main()

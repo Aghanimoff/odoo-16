@@ -1,0 +1,31 @@
+# cmd: docker-compose -f './docker/compose.yaml' -p odoo_16 up
+
+version: "3.7"
+services:
+  odoo:
+    cap_add:
+      - SYS_PTRACE
+    build: .
+    image: aghanimoff-odoo-16:1.0
+    depends_on:
+      - postgres_database
+    ports:
+      - "8016:8069"
+      - "5678:5678"
+      - "3000:3000"
+    environment:
+      - HOST=postgres_database
+      - USER=odoo
+      - PASSWORD=odoo
+      - PROJECT_DATABASE=develop_16
+    volumes:
+      - ../addons:/mnt/addons
+      - ./odoo.conf:/etc/odoo/odoo.conf
+      - ./odoo:/usr/bin/odoo
+      # - ./entrypoint.sh:/entrypoint.sh
+  postgres_database:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo

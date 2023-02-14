@@ -1,8 +1,12 @@
+# Disable translations files
+.po
+
 # sphinx build directories
 _build/
 
 # dotfiles
 .*
+!.vscode/
 !.gitignore
 !.github
 !.mailmap

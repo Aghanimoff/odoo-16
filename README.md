@@ -1,3 +1,21 @@
+# Odoo 16 docker build with VSCode debug settings
+
+### Launch CMD:
+```bash
+docker-compose -f './docker/compose.yaml' -p odoo_16 up
+```
+
+### Address:
+`http://localhost:8016/`
+
+### Login data:
+- master: `admin`
+- web: `admin:admin`
+- db: `odoo:odoo`
+
+
+# Odoo original Readme:
+
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/16.0)
 [![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
