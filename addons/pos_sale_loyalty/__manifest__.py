@@ -11,7 +11,7 @@
     'description': """
 This module correct some behaviors when both module are installed.
 """,
-    'depends': ['pos_sale', 'pos_loyalty'],
+    'depends': ['pos_sale', 'sale_loyalty'],
     'installable': True,
     'auto_install': True,
     'assets': {
